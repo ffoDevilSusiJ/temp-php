@@ -1,0 +1,49 @@
+<div class="modal_head">
+    <i class="icon_close" onclick="common.modal_hide()"></i>
+</div>
+<div class="modal_body">
+    <div class="input_group_modal">
+        <div>First Name</div>
+        <input required type="text" id="first_name" value="{$user.first_name}">
+    </div>
+    <div class="input_group_modal">
+        <div>Last Name</div>
+        <input required type="text" id="last_name" value="{$user.last_name}">
+    </div>
+    <div class="input_group_modal">
+        <div>Phone</div>
+        <input required type="number" id="phone" value="{$user.phone}">
+    </div>
+    <div class="input_group_modal">
+        <div>E-mail</div>
+        <input required type="email" id="email" value="{$user.email}">
+    </div>
+    <div class="input_group_modal">
+        <div>Plot id's</div>
+        <input type="text"  
+        oninput="common.plot_input()" 
+        onfocus="common.plot_input(); document.getElementById('plot_select').classList.add('active')" 
+        onblur="common.close_select()"
+        id="plot_id" value="{$user.plot_id}">
+
+
+          <div class="select-wrapper" id="plot_select">
+            <div class="content">
+              <ul class="options" id="plot__suggest">
+                {section name=i loop=$plots}
+                <li>{$plots[i]}</li>
+                {/section}
+              </ul>
+            </div>
+          </div>
+
+    </div>
+    <div class="modal_controls">
+        <div>
+            <div class="btn_modal" onclick="common.user_edit_update({$user.user_id});">Save</div>
+        </div>
+        <div>
+            <div class="btn_modal light" onclick="common.modal_hide();">Cancel</div>
+        </div>
+    </div>
+</div>
